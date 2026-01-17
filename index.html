@@ -47,7 +47,7 @@
         .font-photograph { font-family: 'photograph', cursive; }
         .font-seasons { font-family: 'seasons', serif; letter-spacing: 2px; }
 
-        /* Smooth BG Slideshow - Standar (Performance Friendly) */
+        /* Background Slideshow */
         .bg-slideshow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; background: #000;
@@ -61,20 +61,19 @@
         }
         .slide-item.active { opacity: 1; }
 
-        /* Card & UI Elements */
+        /* UI Elements */
         .card {
-            background: rgba(18, 18, 18, 0.8);
+            background: rgba(18, 18, 18, 0.85);
             border: 1px solid rgba(197, 160, 89, 0.3);
             border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
+            padding: 30px 20px;
+            margin-bottom: 25px;
         }
 
         .mempelai-img {
             width: 180px; height: 250px; object-fit: cover;
             border-radius: 90px 90px 0 0; border: 3px solid var(--gold);
             padding: 4px; margin: 0 auto;
-            image-rendering: -webkit-optimize-contrast;
         }
 
         .countdown-box {
@@ -87,23 +86,17 @@
         .countdown-val { font-size: 1.25rem; font-weight: 700; color: var(--gold); }
         .countdown-label { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; }
 
-        /* Hadiah & RSVP */
-        .bank-badge {
-            background: #fff; padding: 10px 20px; border-radius: 10px;
-            display: inline-flex; flex-direction: column; align-items: center;
-            margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .btn-gold {
+            background: var(--gold); color: white; width: 100%; padding: 12px;
+            border-radius: 50px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; border: none; cursor: pointer; text-decoration: none;
+            display: inline-block; text-align: center;
         }
-        .bank-logo { height: 24px; }
 
         .form-input {
             width: 100%; background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 10px;
             padding: 12px; color: white; margin-bottom: 12px; outline: none; font-size: 14px;
-        }
-        .btn-gold {
-            background: var(--gold); color: white; width: 100%; padding: 12px;
-            border-radius: 50px; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 1px; border: none; cursor: pointer;
         }
 
         /* Navigasi Bawah */
@@ -117,7 +110,6 @@
         .nav-link.active { color: var(--gold); }
         .nav-link i { display: block; font-size: 18px; margin-bottom: 3px; }
 
-        /* Reveal standar */
         .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -131,17 +123,15 @@
 </head>
 <body>
 
-    <!-- Toast Notif -->
     <div id="toast" class="fixed top-10 left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-2 rounded-full hidden z-[10005] text-sm shadow-lg">Berhasil Disalin!</div>
 
-    <!-- Audio Player -->
     <div id="yt-player-container" style="display:none;"><div id="player"></div></div>
     <div id="music-btn" onclick="toggleMusic()"><i id="music-icon" class="fas fa-compact-disc spin"></i></div>
 
     <!-- Opening Overlay -->
     <div id="opening" class="fixed inset-0 z-[10000] bg-black flex flex-col justify-center items-center text-center transition-transform duration-1000">
         <div class="absolute inset-0 opacity-40">
-            <img src="https://i.ibb.co.com/xK1r98qH/IANM0711.jpg" class="w-full h-full object-cover" alt="Latar Belakang">
+            <img src="https://i.ibb.co.com/xK1r98qH/IANM0711.jpg" class="w-full h-full object-cover">
         </div>
         <div class="relative z-10 px-6">
             <h4 class="font-seasons text-xs uppercase mb-3 tracking-[4px]">The Wedding of</h4>
@@ -152,7 +142,6 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div id="content" class="hidden">
         <div class="bg-slideshow" id="bg-slides"></div>
 
@@ -186,6 +175,35 @@
             </div>
         </section>
 
+        <!-- Acara & Lokasi -->
+        <section id="event" class="py-20 px-6 max-w-md mx-auto text-center">
+            <h2 class="font-seasons text-2xl mb-10 tracking-[4px] text-gold uppercase reveal">Save The Date</h2>
+            
+            <!-- Pemberkatan -->
+            <div class="card reveal">
+                <i class="fas fa-church text-gold text-3xl mb-4"></i>
+                <h3 class="font-seasons text-xl text-gold mb-2 uppercase tracking-[2px]">Pemberkatan Nikah</h3>
+                <div class="w-12 h-[1px] bg-gold/50 mx-auto mb-4"></div>
+                <p class="font-bold text-sm mb-1 uppercase">Sabtu, 14 Februari 2026</p>
+                <p class="text-xs mb-4 italic opacity-80">Pukul 10.00 WIB - Selesai</p>
+                <p class="font-bold text-sm mb-1 uppercase">GPI Hutaginjang</p>
+                <p class="text-[10px] mb-6 opacity-70 leading-relaxed px-4">Kel. Hutabulu, Kec. Siborongborong</p>
+                <a href="https://maps.app.goo.gl/3f6T7Z9K777Y7H7Y7" target="_blank" class="btn-gold !w-auto px-8 !text-[10px]"><i class="fas fa-map-marker-alt mr-2"></i>Lihat Lokasi</a>
+            </div>
+
+            <!-- Resepsi Adat -->
+            <div class="card reveal">
+                <i class="fas fa-users text-gold text-3xl mb-4"></i>
+                <h3 class="font-seasons text-xl text-gold mb-2 uppercase tracking-[2px]">Resepsi Adat</h3>
+                <div class="w-12 h-[1px] bg-gold/50 mx-auto mb-4"></div>
+                <p class="font-bold text-sm mb-1 uppercase">Sabtu, 14 Februari 2026</p>
+                <p class="text-xs mb-4 italic opacity-80">Pukul 12.00 WIB - Selesai</p>
+                <p class="font-bold text-sm mb-1 uppercase">Hutaginjang</p>
+                <p class="text-[10px] mb-6 opacity-70 leading-relaxed px-4">Kel. Hutabulu, Kec. Siborongborong</p>
+                <a href="https://maps.app.goo.gl/3f6T7Z9K777Y7H7Y7" target="_blank" class="btn-gold !w-auto px-8 !text-[10px]"><i class="fas fa-map-marker-alt mr-2"></i>Lihat Lokasi</a>
+            </div>
+        </section>
+
         <!-- Our Gallery -->
         <section id="gallery" class="py-20 px-6 max-w-md mx-auto">
             <h2 class="font-seasons text-2xl text-center mb-10 tracking-[4px] text-gold uppercase reveal">Our Gallery</h2>
@@ -196,16 +214,16 @@
         <section id="gift" class="py-20 px-6 max-w-md mx-auto text-center">
             <h2 class="font-seasons text-2xl mb-10 tracking-[4px] text-gold uppercase reveal">Wedding Gift</h2>
             <div class="card reveal">
-                <div class="bank-badge">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" class="bank-logo" alt="Mandiri">
+                <div class="bg-white p-2 inline-block rounded-lg mb-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" class="h-6" alt="Mandiri">
                 </div>
                 <p class="text-2xl font-black text-gold tracking-widest mb-1">1010014210759</p>
                 <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-4">A.N SHERWIN TOBIAS RAMA</p>
                 <button onclick="copyAcc('1010014210759')" class="btn-gold !w-auto px-6 !py-2 text-[10px]">Salin Rekening</button>
             </div>
             <div class="card reveal">
-                <div class="bank-badge">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" class="bank-logo" alt="Mandiri">
+                <div class="bg-white p-2 inline-block rounded-lg mb-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" class="h-6" alt="Mandiri">
                 </div>
                 <p class="text-2xl font-black text-gold tracking-widest mb-1">1260006667025</p>
                 <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-4">A.N DIANA SIMAMORA</p>
@@ -222,7 +240,7 @@
         <!-- Konfirmasi Kehadiran & Ucapan -->
         <section id="rsvp" class="py-20 px-6 max-w-md mx-auto">
             <div class="card reveal">
-                <h2 class="font-seasons text-2xl text-center mb-6 tracking-[2px] text-gold uppercase leading-tight">Konfirmasi Kehadiran & Ucapan</h2>
+                <h2 class="font-seasons text-2xl text-center mb-6 tracking-[1px] text-gold uppercase leading-tight">Konfirmasi Kehadiran & Ucapan</h2>
                 <form id="form-rsvp" onsubmit="submitRsvp(event)">
                     <input type="text" id="in-name" placeholder="Nama Lengkap" class="form-input" required>
                     <select id="in-status" class="form-input" required>
@@ -245,6 +263,7 @@
     <nav class="bottom-nav">
         <a href="#home" class="nav-link active"><i class="fas fa-home"></i>HOME</a>
         <a href="#couple" class="nav-link"><i class="fas fa-heart"></i>PROFIL</a>
+        <a href="#event" class="nav-link"><i class="fas fa-calendar-alt"></i>ACARA</a>
         <a href="#gallery" class="nav-link"><i class="fas fa-images"></i>GALERI</a>
         <a href="#gift" class="nav-link"><i class="fas fa-gift"></i>KADO</a>
         <a href="#rsvp" class="nav-link"><i class="fas fa-edit"></i>RSVP</a>
@@ -277,23 +296,20 @@
         const lb = document.getElementById('lb-wrapper');
 
         images.forEach((src, i) => {
-            // BG Slides
             const div = document.createElement('div');
             div.className = 'slide-item' + (i===0?' active':'');
             div.style.backgroundImage = `url('${src}')`;
             bg.appendChild(div);
 
-            // Grid
             const g = document.createElement('div');
             g.className = 'aspect-square overflow-hidden rounded-xl border border-gold/30 cursor-pointer';
             g.onclick = () => openLB(i);
-            g.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Galeri ${i+1}" loading="lazy">`;
+            g.innerHTML = `<img src="${src}" class="w-full h-full object-cover" loading="lazy">`;
             grid.appendChild(g);
 
-            // LB
             const s = document.createElement('div');
             s.className = 'swiper-slide flex items-center justify-center';
-            s.innerHTML = `<img src="${src}" class="max-h-[85vh] object-contain" alt="Besar Galeri ${i+1}">`;
+            s.innerHTML = `<img src="${src}" class="max-h-[85vh] object-contain">`;
             lb.appendChild(s);
         });
 
