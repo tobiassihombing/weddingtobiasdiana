@@ -156,7 +156,7 @@
     <!-- Opening Overlay -->
     <div id="opening" class="fixed inset-0 z-[10000] bg-black flex flex-col justify-center items-center text-center transition-transform duration-1000">
         <div class="absolute inset-0 opacity-40">
-            <img src="https://i.ibb.co.com/xK1r98qH/IANM0711.jpg" class="w-full h-full object-cover">
+            <img src="https://i.ibb.co.com/RpwwzPZs/IANM0711.jpg" class="w-full h-full object-cover">
         </div>
         <div class="relative z-10 px-6">
             <h4 class="font-seasons text-xs uppercase mb-3 tracking-[4px]">The Wedding of</h4>
@@ -199,14 +199,14 @@
         <!-- Profil -->
         <section id="couple" class="py-20 px-6 max-w-md mx-auto">
             <div class="card reveal text-center">
-                <img src="https://i.ibb.co.com/N6x4VTyL/D-T0025.jpg" class="mempelai-img mb-5" alt="Tobias" loading="lazy">
+                <img src="https://i.ibb.co.com/6RW6cTN2/IANM0025.jpg" class="mempelai-img mb-5" alt="Tobias" loading="lazy">
                 <h2 class="font-photograph text-3xl text-gold mb-3">Sherwin Tobias Rama Sihombing, S.H.</h2>
                 <p class="text-[10px] font-bold opacity-70 uppercase tracking-widest leading-relaxed mb-4">Putra dari: Bapak Drs. Rudy Tumpal H. Sihombing & Ibu Deacy Maria Br. Lumbanraja</p>
                 <a href="https://instagram.com/tobiassihombing" target="_blank" class="btn-outline-gold"><i class="fab fa-instagram"></i> @tobiassihombing</a>
             </div>
             <div class="text-center font-photograph text-6xl text-gold/30 my-10 reveal">&</div>
             <div class="card reveal text-center">
-                <img src="https://i.ibb.co.com/Sw6z8sm0/IMG-20260118-WA0000.jpg" class="mempelai-img mb-5" alt="Diana" loading="lazy">
+                <img src="https://i.ibb.co.com/svtRBbw7/Tanpa-Judul-1.jpg" class="mempelai-img mb-5" alt="Diana" loading="lazy">
                 <h2 class="font-photograph text-3xl text-gold mb-3">Bdn. Diana Br. Simamora, S.Keb.</h2>
                 <p class="text-[10px] font-bold opacity-70 uppercase tracking-widest leading-relaxed mb-4">Putri dari: Bapak Pdt. Marsihat Simamora & Ibu Risma Simanjuntak</p>
                 <a href="https://instagram.com/simamoradiana" target="_blank" class="btn-outline-gold"><i class="fab fa-instagram"></i> @simamoradiana</a>
@@ -328,6 +328,7 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         let player, isPlay = false;
+        // Semua link foto gallery yang diberikan
         const images = [
             'https://i.ibb.co.com/RpwwzPZs/IANM0711.jpg',
             'https://i.ibb.co.com/4wqPVzxF/DE-4.jpg',
@@ -365,7 +366,7 @@
             'https://i.ibb.co.com/4RdJR3qq/IANM1005crop.jpg',
             'https://i.ibb.co.com/nZn081w/IANM1076.jpg',
             'https://i.ibb.co.com/9kd2SgrS/IANM1118.jpg',
-            'https://i.ibb.co.com/svtRBbw7/Tanpa-Judul-1.jpg'           
+            'https://i.ibb.co.com/svtRBbw7/Tanpa-Judul-1.jpg'
         ];
 
         // Init Images
@@ -374,17 +375,22 @@
         const lb = document.getElementById('lb-wrapper');
 
         images.forEach((src, i) => {
-            const div = document.createElement('div');
-            div.className = 'slide-item' + (i===0?' active':'');
-            div.style.backgroundImage = `url('${src}')`;
-            bg.appendChild(div);
+            // Background slideshow slides (batasi 10 pertama untuk performa)
+            if (i < 10) {
+                const div = document.createElement('div');
+                div.className = 'slide-item' + (i===0?' active':'');
+                div.style.backgroundImage = `url('${src}')`;
+                bg.appendChild(div);
+            }
 
+            // Gallery Grid Item
             const g = document.createElement('div');
-            g.className = 'aspect-square overflow-hidden rounded-xl border border-gold/30 cursor-pointer';
+            g.className = 'aspect-square overflow-hidden rounded-xl border border-gold/30 cursor-pointer shadow-lg hover:scale-[1.02] transition-transform';
             g.onclick = () => openLB(i);
             g.innerHTML = `<img src="${src}" class="w-full h-full object-cover" loading="lazy">`;
             grid.appendChild(g);
 
+            // Lightbox Swiper Slide
             const s = document.createElement('div');
             s.className = 'swiper-slide flex items-center justify-center';
             s.innerHTML = `<img src="${src}" class="max-h-[85vh] object-contain">`;
@@ -449,7 +455,13 @@
         function openLB(i) {
             document.getElementById('lb').style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            if(!swiper) swiper = new Swiper(".mySwiper", { loop: true, pagination: { el: ".swiper-pagination", clickable: true }});
+            if(!swiper) {
+                swiper = new Swiper(".mySwiper", { 
+                    loop: true, 
+                    pagination: { el: ".swiper-pagination", clickable: true },
+                    lazy: true
+                });
+            }
             swiper.slideToLoop(i, 0);
         }
         function closeLB() {
